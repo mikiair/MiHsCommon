@@ -7,7 +7,7 @@
     <ProjectGuid>{4E38D967-61AD-4E0A-AA10-A5D6C2AFE3D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MiHsCommon</RootNamespace>
+    <RootNamespace>MiHs.Common</RootNamespace>
     <AssemblyName>MiHsCommon</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

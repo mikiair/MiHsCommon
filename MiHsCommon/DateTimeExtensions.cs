@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiHsCommon
+namespace MiHs.Common
 {
     /// <summary>
     /// DateTime extension class, based on
@@ -58,6 +58,31 @@ namespace MiHsCommon
         {
             long ticks = (date.Ticks + resolutionTicks - 1) / resolutionTicks;
             return new DateTime(ticks * resolutionTicks);
+        }
+
+        /// <summary>
+        /// Returns a corrected DateTime which represents a file time on a FAT32 system
+        /// (Windows results a wrong conversion of these file times)
+        /// The returned value will compensate errors in several cases, but the effectiveness depends on the file's copying history!
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static DateTime CorrectFAT32FileTime(this DateTime date)
+        {
+            bool isDSTNow = TimeZone.CurrentTimeZone.IsDaylightSavingTime(DateTime.Now),
+                 isDSTDate = TimeZone.CurrentTimeZone.IsDaylightSavingTime(date);
+
+            if (isDSTNow==isDSTDate) { return date; }
+            else
+            {
+                if (isDSTNow)
+                {
+                    return new DateTime(date.Ticks + TimeSpan.TicksPerHour);
+                } else
+                {
+                    return new DateTime(date.Ticks - TimeSpan.TicksPerHour);
+                }
+            }
         }
     }
 }
