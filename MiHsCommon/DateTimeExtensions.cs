@@ -75,13 +75,8 @@ namespace MiHs.Common
             if (isDSTNow==isDSTDate) { return date; }
             else
             {
-                if (isDSTNow)
-                {
-                    return new DateTime(date.Ticks + TimeSpan.TicksPerHour);
-                } else
-                {
-                    return new DateTime(date.Ticks - TimeSpan.TicksPerHour);
-                }
+                long shift = isDSTNow ? TimeSpan.TicksPerHour : -TimeSpan.TicksPerHour;
+                return new DateTime(date.Ticks + shift);
             }
         }
     }

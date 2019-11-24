@@ -32,12 +32,16 @@ namespace MiHs.Common
             if (!string.IsNullOrEmpty(pathName) && pathName[0] != '\\' && pathName[1]==Path.VolumeSeparatorChar)
             {
                 return pathName.Substring(2);
-            } else
-            {
-                return pathName;
             }
+            return pathName;
         }
 
+        /// <summary>
+        /// Returns true if the filename matches a given pattern
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="pattern"></param>
+        /// <returns></returns>
         public static bool MatchesFilePattern(this string fileName, string pattern)
         {
             if (pattern == "*" || pattern == "*.*") return true;
