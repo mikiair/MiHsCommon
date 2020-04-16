@@ -15,7 +15,7 @@ namespace MiHs.Common
     public class EnumDictionary<TKey, TValue> : Dictionary<TKey, TValue>
     {
         /// <summary>
-        /// Throws an ArgumentException when number of values in enum does not equal the number of dictionary entries
+        /// Throws an ArgumentException when the number of values in the enum does not equal the number of dictionary entries
         /// </summary>
         /// <param name="enumType"></param>
         protected void checkEntriesAfterInit()

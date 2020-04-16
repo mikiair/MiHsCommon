@@ -67,6 +67,7 @@ namespace MiHs.Common
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
+        /// <remarks>Depends on TimeZone.CurrentTimeZone.IsDaylightSavingTime for current date/time</remarks>
         public static DateTime CorrectFAT32FileTime(this DateTime date)
         {
             bool isDSTNow = TimeZone.CurrentTimeZone.IsDaylightSavingTime(DateTime.Now),

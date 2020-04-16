@@ -33,13 +33,17 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayCompare.cs" />
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="EnumDictionary.cs" />
     <Compile Include="FileTimeCorrection.cs" />
+    <Compile Include="IStatusDescriptionIconDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusDescriptionIcon.cs" />
+    <Compile Include="StatusDescriptionIconDictionary.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
