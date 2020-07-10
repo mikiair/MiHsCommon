@@ -58,7 +58,7 @@ namespace MiHs.Common
         internal static class FindFilesPatternToRegex
         {
             private static readonly char[] illegalChars = (@"\/:<>|" + "\"").ToCharArray();
-            //private static Regex IllegalCharactersRegex = new Regex("[" + @"\/:<>|" + "\"]", RegexOptions.Compiled);
+
             private static Regex CatchExtensionRegex = new Regex(@"^\s*.+\.([^\.]+)\s*$", RegexOptions.Compiled);
             private static Regex HasQuestionMarkRegEx = new Regex(@"\?", RegexOptions.Compiled);
 
@@ -108,7 +108,6 @@ namespace MiHs.Common
                 }
 
                 if (pattern.IndexOfAny(illegalChars) >= 0)
-                //if (IllegalCharactersRegex.IsMatch(pattern))
                 {
                     throw new ArgumentException("Pattern contains illegal characters.");
                 }
