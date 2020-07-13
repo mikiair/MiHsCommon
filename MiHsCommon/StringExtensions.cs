@@ -12,6 +12,8 @@ namespace MiHs.Common
     /// </summary>
     public static class StringExtensions
     {
+        private const char backSlash = '\\';
+
         /// <summary>
         /// Ensures that a path name ends with a trailing backslash
         /// </summary>
@@ -19,7 +21,7 @@ namespace MiHs.Common
         /// <returns></returns>
         public static string EnsureTrailingBackslash(this string pathName)
         {
-            return pathName[pathName.Length-1] == '\\' ? pathName : pathName + '\\';
+            return pathName[pathName.Length-1] == backSlash ? pathName : pathName + backSlash;
         }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace MiHs.Common
         /// <returns></returns>
         public static string RemoveVolumeLetter(this string pathName)
         {
-            if (!string.IsNullOrEmpty(pathName) && pathName[0] != '\\' && pathName[1]==Path.VolumeSeparatorChar)
+            if (!string.IsNullOrEmpty(pathName) && pathName[0] != backSlash && pathName[1]==Path.VolumeSeparatorChar)
             {
                 return pathName.Substring(2);
             }
@@ -54,8 +56,9 @@ namespace MiHs.Common
         /// Converts a filename pattern to a regular expression
         /// </summary>
         /// <remarks>Quoted from answer at https://stackoverflow.com/questions/652037/how-do-i-check-if-a-filename-matches-a-wildcard-pattern
+        /// Defined as public to allow caching of regex converted for several filenames
         /// </remarks>
-        internal static class FindFilesPatternToRegex
+        public static class FindFilesPatternToRegex
         {
             private static readonly char[] illegalChars = (@"\/:<>|" + "\"").ToCharArray();
 
